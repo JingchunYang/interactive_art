@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
     <title>Interactive Art Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+
+            background-color: cornsilk;
+        }
+
+        .header {
+            background-color: azure;
+      
+
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
             padding: 20px;
         }
 
-        header, footer {
+
+
+        .upload {
+            margin: 20px;
+        }
+
+
+        header,
+        footer {
             text-align: center;
             background-color: #f4f4f4;
             padding: 10px 0;
@@ -31,22 +50,26 @@
 
         #art-container {
             position: relative;
-            width: 600px;
-            height: 600px;
+            width: 90%;
+            /* height: 600px; */
+            aspect-ratio: 16/9;
             border: 1px solid #ccc;
+
         }
 
         .art-image {
             position: absolute;
             width: 200px;
-            height: 200px;
+            /* height: 200px; */
         }
 
         #controls {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 10px;
+            width: 100%;
         }
+
 
         label {
             display: block;
@@ -56,60 +79,275 @@
         input[type="range"] {
             width: 100%;
         }
+
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Style the custom upload button */
+        .custom-upload-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-upload-button:hover {
+            background-color: #45a049;
+        }
+
+
+        .control-group {
+            padding: 20px;
+            background-color: bisque;
+            border-radius: 10px;
+            
+            box-shadow: 0px 0px 0px burlywood;
+            transition: 1s;
+        }
+
+        .control-group:hover{
+            box-shadow: 5px 5px 5px burlywood;
+        }
+
+        .controlGrid {
+            /* display: grid;
+  
+            grid-gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+
+        }
+
+        .eachControl {
+            padding: 10px 0px;
+            /* width: 100%;
+            height: auto;
+            aspect-ratio: auto 16/9; */
+
+            /* place-items: center; */
+
+            /* display: grid;
+            grid-template-rows: subgrid;
+            grid-row: span 2; */
+
+            /* background: lightpink; */
+            /* margin: 0px;
+            padding: 0px 0px;
+            justify-items: start; */
+            /* row-gap: 16px; */
+
+
+            /* box-shadow: 5px 5px 5px 5px rgba(0, 0, 255, .1); */
+            /* transition: 1s; */
+
+        }
+
+        .email {
+            padding: 50px;
+            width: 100%;
+        }
     </style>
 </head>
+
 <body>
+    <header class="header">
+        <h1>Create Your Sublime Dream</h1>
+    </header>
     <div class="container">
-        <header>
-            <h1>Interactive Art Page</h1>
-        </header>
+
+
+
+
         <main>
             <div id="art-container">
                 <!-- Placeholders for images with random sources -->
-                <img src="https://picsum.photos/200?random=1" id="image1" class="art-image" alt="Art Image 1">
-                <img src="https://picsum.photos/200?random=2" id="image2" class="art-image" alt="Art Image 2">
-                <img src="https://picsum.photos/200?random=3" id="image3" class="art-image" alt="Art Image 3">
+                <img src="image/grassland1.jpg" id="image1" class="art-image" alt="Art Image 1">
+                <img src="image/grassland2.jpg" id="image2" class="art-image" alt="Art Image 2">
+                <img src="image/grassland3.jpg" id="image3" class="art-image" alt="Art Image 3">
             </div>
+
+
+
+            <div class="eachControl upload">
+                <label for="image-upload" class="custom-upload-button">Upload Your Image</label>
+                <input type="file" id="image-upload" accept="image/*">
+
+            </div>
+
+
+
             <div id="controls">
+
                 <!-- Controls for manipulating art -->
                 <div class="control-group" id="controls-image1">
+
                     <h3>Controls for Image 1</h3>
-                    <label for="blend-mode-image1">Blend Mode:</label>
-                    <select id="blend-mode-image1" class="blend-mode">
-                        <option value="normal">Normal</option>
-                        <option value="multiply">Multiply</option>
-                        <option value="screen">Screen</option>
-                        <option value="overlay">Overlay</option>
-                        <!-- Add more blend modes as needed -->
-                    </select>
-                    
-                    <label for="position-x-image1">Position X:</label>
-                    <input type="range" id="position-x-image1" class="position-x" name="position-x-image1" min="0" max="100">
-                    
-                    <label for="position-y-image1">Position Y:</label>
-                    <input type="range" id="position-y-image1" class="position-y" name="position-y-image1" min="0" max="100">
+
+                    <div class="controlGrid">
+
+                        <div class="eachControl">
+                            <label for="blend-mode-image1">Blend Mode:</label>
+                            <select id="blend-mode-image1" class="blend-mode">
+                                <option value="normal">Normal</option>
+                                <option value="multiply">Multiply</option>
+                                <option value="screen">Screen</option>
+                                <option value="overlay">Overlay</option>
+                                <!-- Add more blend modes as needed -->
+                            </select>
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="position-x-image1">Position X:</label>
+                            <input type="range" id="position-x-image1" class="position-x" name="position-x-image1"
+                                min="0" max="100">
+
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="position-y-image1">Position Y:</label>
+                            <input type="range" id="position-y-image1" class="position-y" name="position-y-image1"
+                                min="0" max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="width-image1"> Width(%)</label>
+                            <input type="range" id="width-image1" class="width" name="rotation-image1" min="10"
+                                max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="height-image1">Height(%)</label>
+                            <input type="range" id="height-image1" class="height" name="height-image1" min="10"
+                                max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="size-image1">Size (%):</label>
+                            <input type="range" id="size-image1" class="size" name="size-image1" min="30" max="80">
+                        </div>
+
+                        <br>
+                        <br>
+
+                        <div class="eachControl">
+                            <label for="opacity-image1">Opacity (%):</label>
+                            <input type="range" id="opacity-image1" class="opacity" name="opacity-image1" min="0"
+                                max="1" step="0.1">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="rotation-image1">
+                                Rotation (deg)
+                            </label>
+                            <input type="range" id="rotation-image1" class="rotation" name="rotation-image1" min="0"
+                                max="360">
+                        </div>
+
+
+                        <div class="eachControl">
+                            <label for="z-index-image1">Z-Index:</label>
+                            <input type="range" id="z-index-image1" class="z-index" name="z-index-image1" min="0"
+                                max="10">
+                        </div>
+
+                    </div>
+
                 </div>
+
+
+
+
 
                 <div class="control-group" id="controls-image2">
                     <h3>Controls for Image 2</h3>
-                    <label for="blend-mode-image2">Blend Mode:</label>
-                    <select id="blend-mode-image2" class="blend-mode">
-                        <option value="normal">Normal</option>
-                        <option value="multiply">Multiply</option>
-                        <option value="screen">Screen</option>
-                        <option value="overlay">Overlay</option>
-                        <!-- Add more blend modes as needed -->
-                    </select>
-                    
-                    <label for="position-x-image2">Position X:</label>
-                    <input type="range" id="position-x-image2" class="position-x" name="position-x-image2" min="0" max="100">
-                    
-                    <label for="position-y-image2">Position Y:</label>
-                    <input type="range" id="position-y-image2" class="position-y" name="position-y-image2" min="0" max="100">
+                    <div class="controlGrid">
+                        <label for="blend-mode-image2">Blend Mode:</label>
+                        <select id="blend-mode-image2" class="blend-mode">
+                            <option value="normal">Normal</option>
+                            <option value="multiply">Multiply</option>
+                            <option value="screen">Screen</option>
+                            <option value="overlay">Overlay</option>
+                            <!-- Add more blend modes as needed -->
+                        </select>
+
+                        <div class="eachControl">
+                            <label for="position-x-image2">Position X:</label>
+                            <input type="range" id="position-x-image2" class="position-x" name="position-x-image2"
+                                min="0" max="100">
+                        </div>
+
+
+                        <div class="eachControl">
+                            <label for="position-y-image2">Position Y:</label>
+                            <input type="range" id="position-y-image2" class="position-y" name="position-y-image2"
+                                min="0" max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="width-image2"> Width(%)</label>
+                            <input type="range" id="width-image2" class="width" name="rotation-image2" min="10"
+                                max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="height-image2">Height(%)</label>
+                            <input type="range" id="height-image2" class="height" name="height-image2" min="10"
+                                max="100">
+                        </div>
+
+                        <div class="eachControl">
+                            <label for="size-image2">Size (%):</label>
+                            <input type="range" id="size-image2" class="size" name="size-image2" min="30" max="80">
+                        </div>
+
+                        <br>
+                        <br>
+
+
+                        <div class="eachControl">
+                            <label for="opacity-image2">Opacity (%):</label>
+                            <input type="range" id="opacity-image2" class="opacity" name="opacity-image2" min="0"
+                                max="1" step="0.1">
+                        </div>
+
+
+                        <div class="eachControl">
+                            <label for="rotation-image2">
+                                Rotation (deg)
+                            </label>
+                            <input type="range" id="rotation-image2" class="rotation" name="rotation-image2" min="0"
+                                max="360">
+                        </div>
+
+
+                        <div class="eachControl">
+                            <label for="z-index-image2">Z-Index:</label>
+                            <input type="range" id="z-index-image2" class="z-index" name="z-index-image2" min="0"
+                                max="10">
+                        </div>
+                    </div>
+
+
+
+
                 </div>
+
+
+
 
                 <div class="control-group" id="controls-image3">
                     <h3>Controls for Image 3</h3>
+
+                    <div class="controlGrid">
+
+                    </div>
+
                     <label for="blend-mode-image3">Blend Mode:</label>
                     <select id="blend-mode-image3" class="blend-mode">
                         <option value="normal">Normal</option>
@@ -118,24 +356,103 @@
                         <option value="overlay">Overlay</option>
                         <!-- Add more blend modes as needed -->
                     </select>
-                    
-                    <label for="position-x-image3">Position X:</label>
-                    <input type="range" id="position-x-image3" class="position-x" name="position-x-image3" min="0" max="100">
-                    
-                    <label for="position-y-image3">Position Y:</label>
-                    <input type="range" id="position-y-image3" class="position-y" name="position-y-image3" min="0" max="100">
+
+
+                    <div class="eachControl">
+                        <label for="position-x-image3">Position X:</label>
+                        <input type="range" id="position-x-image3" class="position-x" name="position-x-image3" min="0"
+                            max="100">
+                    </div>
+
+                    <div class="eachControl">
+                        <label for="position-y-image3">Position Y:</label>
+                        <input type="range" id="position-y-image3" class="position-y" name="position-y-image3" min="0"
+                            max="100">
+                    </div>
+
+
+                    <div class="eachControl">
+                        <label for="width-image3"> Width(%)</label>
+                        <input type="range" id="width-image3" class="width" name="rotation-image3" min="10" max="100">
+                    </div>
+
+
+                    <div class="eachControl">
+                        <label for="height-image3">Height(%)</label>
+                        <input type="range" id="height-image3" class="height" name="height-image3" min="10" max="100">
+                    </div>
+
+                    <div class="eachControl">
+                        <label for="size-image3">Size (%):</label>
+                        <input type="range" id="size-image3" class="size" name="size-image3" min="30" max="80">
+                    </div>
+
+                    <br>
+                    <br>
+
+
+                    <div class="eachControl">
+                        <label for="opacity-image3">Opacity (%):</label>
+                        <input type="range" id="opacity-image3" class="opacity" name="opacity-image3" min="0" max="1"
+                            step="0.1">
+                    </div>
+
+                    <div class="eachControl">
+                        <label for="rotation-image3">
+                            Rotation (deg)
+                        </label>
+                        <input type="range" id="rotation-image3" class="rotation" name="rotation-image3" min="0"
+                            max="360">
+                    </div>
+
+
+
+                    <div class="eachControl">
+                        <label for="z-index-image3">Z-Index:</label>
+                        <input type="range" id="z-index-image3" class="z-index" name="z-index-image3" min="0" max="10">
+                    </div>
+
                 </div>
+
+
             </div>
-            <div id="email-section">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-                <button id="send-email">Send Art</button>
-            </div>
-        </main>
-        <footer>
-            <p>© Art by...</p>
-        </footer>
+
+
+
+
+
     </div>
+
+
+
+    <div id="email-section" class="email">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <button id="send-email">Send Art</button>
+    </div>
+
+
+    </main>
+    <footer class="header">
+        <p>© Art by Yourself</p>
+    </footer>
+    </div>
+
+
+
+
+
+
+
+
     <script src="script.js"></script>
+    <script src="server.js"></script>
+    <script src="client.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.7/dist/html2canvas.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
 </body>
+
 </html>
